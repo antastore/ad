@@ -8,7 +8,7 @@
 	├ My God
 	├ My Parents
 	├ Fatih A.
-	├ Ferdi
+	├ LeonGanz
 	├ DikaArdnt
 	├ Mhankbarbar
 	├ Nurutomo
@@ -325,7 +325,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     + `ORG:Owner ${botname};\n` // the organization of the contact
                     + `TEL;type=CELL;type=VOICE;waid=${ownernomer}:${ownernomerr}\n`
                     + 'END:VCARD'
-                alpha.sendMessage(m.chat, { contacts: { displayName: 'Zeeone Ofc.', contacts: [{ vcard }] } }, { quoted: m })
+                alpha.sendMessage(m.chat, { contacts: { displayName: 'LeonGanz', contacts: [{ vcard }] } }, { quoted: m })
             }
             break
             case 'rules':
@@ -346,9 +346,16 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
 					})
 					break
-				case 'waifu': case 'loli':
+				case 'waifu':
 					m.reply(lang.wait())
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
+					.then(({data}) => {
+					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
+					})
+					break
+                                case 'loli':
+                                        m.reply(lang.wait())
+					axios.get(`https://api.waifu.pics/sfw/neko`)
 					.then(({data}) => {
 					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
 					})
@@ -580,12 +587,17 @@ case 'mp4': case 'ytmp4':
                 teks += `\n⋙ *${botname}* ⋘`
                 alpha.sendMessage(from, { text: tekss, mentions: groupMembers.map(a => a.id) }, { quoted: m })
             break
-            case 'hidetag':
-                if (!m.isGroup) return m.reply(lang.groupOnly())
-                if (!isGroupAdmins) return m.reply(lang.adminOnly())
-                if (!isBotAdmins) return m.reply(lang.botNotAdmin())
-                alpha.sendMessage(from, { text : q ? q : '' , mentions: groupMembers.map(a => a.id)})
-            break
+           case 'hidetag': 
+           if (!m.isGroup) return m.reply(lang.groupOnly())
+           if (!isGroupAdmins) return m.reply(lang.adminOnly())
+           if (!isBotAdmins) return m.reply(lang.botNotAdmin())
+	   if (alpha.message.extendedTextMessage === undefined || alpha.message.extendedTextMessage === null) {
+	   hideTag(from, `${q}`) 
+	   } else {  
+	   quotedText = alpha.message.extendedTextMessage.contextInfo.quotedMessage.conversation
+	   hideTag(from, `${quotedText}`)
+		 		}
+	break
             case 'kick': {
 				if (!m.isGroup) return m.reply(lang.groupOnly())
                 if (!isGroupAdmins) return m.reply(lang.adminOnly())
