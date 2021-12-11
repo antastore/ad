@@ -29,11 +29,11 @@ exports.cmdNotFound = (cmd, prefix) => {
 }
 
 exports.ownerOnly = () => {
-    return `❎ Command ini khusus Owner!`
+    return `❎ Command ini khusus Leon-Sama!`
 }
 
 exports.doneOwner = () => {
-    return `✅  ️Sudah selesai, Owner ~`
+    return `✅  ️Sudah selesai, Leon-Sama ~`
 }
 
 exports.groupOnly = () => {
@@ -83,7 +83,7 @@ exports.notNum = (q) => {
 exports.listMenu = (time, salam, pushname, prefix) => {
     return `*Selamat ${salam} ${pushname} 😖*
 *⌚Time Server : ${time}*
-*📚 List-Menu Alphabot-Md :*
+*📚 List-Menu Yui-Chan :*
 
 ╭─❒ 「 Bot Info 」 ❒
 ├ ${prefix}owner
@@ -197,10 +197,11 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ My Parents
 ├ Fatih A.
 ├ Ferdi
+├ LeonGanz
 ├ DikaArdnt
 ├ Mhankbarbar
-├ Nurutomo
-├ Rashid
+├ Wh1te-L10n
+├ Melsha-Chan
 ├ ZeeoneOfc
 ├ Penyedia Module
 ╰❒ And All Support
@@ -239,9 +240,9 @@ Sanksi: *PERMANENT BLOCK*
 
 Jika sudah dipahami rules-nya, silakan ketik *${prefix}allmenu* untuk memulai!
 
-⚠️ Segala kebijakan dan ketentuan Alphabot di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, memblokir user(*﹏*) 
+⚠️ Segala kebijakan dan ketentuan Yui-Chan di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, memblokir user(*﹏*) 
 
-Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan Alphabot
+Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan Yui-Chan
 😖🙏
 `
 }
@@ -249,11 +250,7 @@ exports.source = () =>{
 return`*── 「 SOURCE 」 ──*
 
 Base : https://github.com/DikaArdnt/Hisoka-Morou
-Recode : https://github.com/zeeoneofc/Alphabot-Md
-
-Untuk tutorial penginstalan kalian bisa tonton
-video terbaru di playlist ini.
-https://youtube.com/playlist?list=PLFCglBzFPHG7vSQaa9S3P8yfla_d9w-2-
+Recode : https://github.com/Bl4ck-lion/Yui-
 `
 }
 exports.tos = (ownernomer) => {
