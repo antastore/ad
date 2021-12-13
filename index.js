@@ -587,17 +587,11 @@ case 'mp4': case 'ytmp4':
                 teks += `\n⋙ *${botname}* ⋘`
                 alpha.sendMessage(from, { text: tekss, mentions: groupMembers.map(a => a.id) }, { quoted: m })
             break
-           case 'hidetag': 
-           if (!m.isGroup) return m.reply(lang.groupOnly())
-           if (!isGroupAdmins) return m.reply(lang.adminOnly())
-           if (!isBotAdmins) return m.reply(lang.botNotAdmin())
-	   if (alpha.message.extendedTextMessage === undefined || alpha.message.extendedTextMessage === null) {
-	   hideTag(from, `${q}`) 
-	   } else {  
-	   quotedText = alpha.message.extendedTextMessage.contextInfo.quotedMessage.conversation
-	   hideTag(from, `${quotedText}`)
-		 		}
-	break
+            case prefix+'hidetag':
+                if (!isGroup) return m.reply(lang.groupOnly())
+                if (!isGroupAdmins && !isOwner) return return m.reply(lang.adminOnly())
+                alpha.sendMessage(from, { text : q ? q : '' , mentions: groupMembers.map(a => a.id)})
+            break
             case 'kick': {
 				if (!m.isGroup) return m.reply(lang.groupOnly())
                 if (!isGroupAdmins) return m.reply(lang.adminOnly())
