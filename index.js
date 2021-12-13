@@ -8,7 +8,7 @@
 	├ My God
 	├ My Parents
 	├ Fatih A.
-	├ LeonGanz
+	├ Ferdi
 	├ DikaArdnt
 	├ Mhankbarbar
 	├ Nurutomo
@@ -90,8 +90,8 @@ module.exports = alpha = async (alpha, m, chatUpdate) => {
         const groupName = m.isGroup ? groupMetadata.subject : ''
         const participants = m.isGroup ? await groupMetadata.participants : ''
         const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
-     	const isBotAdmins = m.isGroup ? groupAdmins.includes(m.sender) : true
-        const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : true
+     	const isBotAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
+        const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 
 		const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2021,status: 200, thumbnail: fs.readFileSync(setting.thumbnail), surface: 200, message: `© ${ownername}`, orderTitle: 'FATIHmek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `© ${ownername}`,jpegThumbnail: setting.thumbnail}}}
@@ -325,7 +325,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     + `ORG:Owner ${botname};\n` // the organization of the contact
                     + `TEL;type=CELL;type=VOICE;waid=${ownernomer}:${ownernomerr}\n`
                     + 'END:VCARD'
-                alpha.sendMessage(m.chat, { contacts: { displayName: 'LeonGanz', contacts: [{ vcard }] } }, { quoted: m })
+                alpha.sendMessage(m.chat, { contacts: { displayName: 'Zeeone Ofc.', contacts: [{ vcard }] } }, { quoted: m })
             }
             break
             case 'rules':
@@ -346,16 +346,9 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
 					})
 					break
-				case 'waifu':
+				case 'waifu': case 'loli':
 					m.reply(lang.wait())
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
-					.then(({data}) => {
-					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
-					})
-					break
-                                case 'loli':
-                                        m.reply(lang.wait())
-					axios.get(`https://api.waifu.pics/sfw/neko`)
 					.then(({data}) => {
 					sendFileFromUrl(m.chat, data.url, mess.sukses, m)
 					})
@@ -587,13 +580,14 @@ case 'mp4': case 'ytmp4':
                 teks += `\n⋙ *${botname}* ⋘`
                 alpha.sendMessage(from, { text: tekss, mentions: groupMembers.map(a => a.id) }, { quoted: m })
             break
-            case prefix+'hidetag':
-                if (!isGroup) return m.reply(lang.groupOnly())
-                if (!isGroupAdmins && !isOwner) return m.reply(lang.adminOnly())
+            case 'hidetag':
+                if (!m.isGroup) return m.reply(lang.groupOnly())
+                if (!isGroupAdmins) return m.reply(lang.adminOnly())
+                if (!isBotAdmins) return m.reply(lang.botNotAdmin())
                 alpha.sendMessage(from, { text : q ? q : '' , mentions: groupMembers.map(a => a.id)})
             break
             case 'kick': {
-		if (!m.isGroup) return m.reply(lang.groupOnly())
+				if (!m.isGroup) return m.reply(lang.groupOnly())
                 if (!isGroupAdmins) return m.reply(lang.adminOnly())
                 if (!isBotAdmins) return m.reply(lang.botNotAdmin())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
