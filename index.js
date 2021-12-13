@@ -90,8 +90,8 @@ module.exports = alpha = async (alpha, m, chatUpdate) => {
         const groupName = m.isGroup ? groupMetadata.subject : ''
         const participants = m.isGroup ? await groupMetadata.participants : ''
         const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
-     	const isBotAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-        const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
+     	const isBotAdmins = m.isGroup ? groupAdmins.includes(m.sender) : true
+        const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : true
 
 		const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 2021,status: 200, thumbnail: fs.readFileSync(setting.thumbnail), surface: 200, message: `© ${ownername}`, orderTitle: 'FATIHmek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `© ${ownername}`,jpegThumbnail: setting.thumbnail}}}
