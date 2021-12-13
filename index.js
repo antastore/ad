@@ -589,11 +589,11 @@ case 'mp4': case 'ytmp4':
             break
             case prefix+'hidetag':
                 if (!isGroup) return m.reply(lang.groupOnly())
-                if (!isGroupAdmins && !isOwner) return return m.reply(lang.adminOnly())
+                if (!isGroupAdmins && !isOwner) return m.reply(lang.adminOnly())
                 alpha.sendMessage(from, { text : q ? q : '' , mentions: groupMembers.map(a => a.id)})
             break
             case 'kick': {
-				if (!m.isGroup) return m.reply(lang.groupOnly())
+		if (!m.isGroup) return m.reply(lang.groupOnly())
                 if (!isGroupAdmins) return m.reply(lang.adminOnly())
                 if (!isBotAdmins) return m.reply(lang.botNotAdmin())
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
